@@ -4,26 +4,22 @@ export default function Header() {
     <header
       style={{ height: 50, display: 'flex', justifyContent: 'space-between' }}
     >
-      <div>
-        <Link href="/">
-          <a>
-            {' '}
-            <img style={{ height: 50 }} src="/logo.png" alt="" />
-          </a>
-        </Link>
-      </div>
+      <Link href="/">
+        <a>
+          {' '}
+          <img style={{ height: 50 }} src="/logo.png" alt="" />
+        </a>
+      </Link>
 
-      <Link href="./product-list">
+      <Link href="/products">
         <a>Products</a>
       </Link>
 
-      <div>
-        <Link href="/cart">
-          <a>
-            <img style={{ height: 50 }} src="/cart.png" alt="" />
-          </a>
-        </Link>
-      </div>
+      <Link href="/cart">
+        <a>
+          <img style={{ height: 50 }} src="/cart.png" alt="" />
+        </a>
+      </Link>
     </header>
   );
 }

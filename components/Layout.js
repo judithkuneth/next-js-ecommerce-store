@@ -6,7 +6,7 @@ export default function Layout(props) {
     <div>
       <Head>
         <title>Bäckerei Schrott</title>
-        <link rel="icon" href="/logo.png" />
+        <link rel="icon" href="/logo.ico" />
       </Head>
       <Header />
 
