@@ -1,10 +1,10 @@
 export default function Footer() {
   return (
-    <head>
+    <footer>
       <div>
         <img src="/logo.png" alt="" />
         <img src="/cart.png" alt="" />
       </div>
-    </head>
+    </footer>
   );
 }

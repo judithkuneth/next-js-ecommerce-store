@@ -1,6 +1,6 @@
 import Layout from '../../components/Layout';
 import Link from 'next/link';
-import ShoppingCartComponent from './ShoppingCartComponent.js';
+import ShoppingCartComponent from '../../components/ShoppingCartComponent.js';
 
 export default function ShoppingCart() {
   return (

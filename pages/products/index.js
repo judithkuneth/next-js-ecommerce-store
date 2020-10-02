@@ -3,20 +3,21 @@ import Layout from '../../components/Layout';
 import { products } from '../../database.js';
 import { useState } from 'react';
 
-export default function ProductList(props) {
-  const [cart, setCart] = useState(['33']);
+export default function ProductList() {
+  const [cart, setCart] = useState([{}]);
+  const [count, setCount] = useState(0);
   console.log('hello');
+  console.log(products);
 
-  const find = products.find((currentProduct) => {
-    if (currentProduct.id === '26') {
-      return true;
-    }
-    return false;
-    // console.log(product.id);
-    // return product.id;
-  });
-  console.log(find);
-  const newCart = [...cart, find.name];
+  function addItem(id, name) {
+    // Check whether id exists, if yes, update count in obj, if no, add new object {id:id, count:count}
+    // const find = cart.find((e) => e === id);
+
+    console.log('add item');
+    const newCart = [...cart, { id: id, count: count, name: name }];
+    console.log(newCart);
+    return setCart(newCart);
+  }
 
   return (
     <Layout>
@@ -27,15 +28,14 @@ export default function ProductList(props) {
       Currently you have {cart.length} products in your cart. They have the
       following IDs:
       {cart.map((item) => {
-        return item;
+        return item.id;
       })}
       <ul>
         {products.map((product) => {
           return (
-            <>
+            <React.Fragment key={product.id}>
               <h5>--</h5>
-              <li key={product.id}>
-                {/* Create a link to /products/:id */}
+              <li>
                 <Link href={`/products/${product.id}`}>
                   <a>
                     <img
@@ -46,15 +46,19 @@ export default function ProductList(props) {
                     {product.name} {product.price}
                   </a>
                 </Link>
+                <input
+                  onChange={(e) => {
+                    setCount(e.currentTarget.value);
+                  }}
+                ></input>
                 <button
                   key={product.id}
-                  onClick={() => setCart(newCart)}
-                  // onClick={setCart(newCart)}
+                  onClick={() => addItem(`${product.id}`, `${product.name}`)}
                 >
                   Add
                 </button>
               </li>
-            </>
+            </React.Fragment>
           );
         })}
       </ul>
