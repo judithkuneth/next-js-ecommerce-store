@@ -2,17 +2,15 @@ import Link from 'next/link';
 import Layout from '../../components/Layout';
 import { products } from '../../database.js';
 import { useState } from 'react';
+import Merge from '../../components/Merge.js';
 
 export default function ProductList() {
-  const [cart, setCart] = useState([{}]);
+  const [cart, setCart] = useState([]);
   const [count, setCount] = useState(0);
   console.log('hello');
   console.log(products);
 
   function addItem(id, name) {
-    // Check whether id exists, if yes, update count in obj, if no, add new object {id:id, count:count}
-    // const find = cart.find((e) => e === id);
-
     console.log('add item');
     const newCart = [...cart, { id: id, count: count, name: name }];
     console.log(newCart);
@@ -23,13 +21,15 @@ export default function ProductList() {
     <Layout>
       <h1>Products</h1>
       {/* {setCart(newCart)} */}
-      This is a List of Products
-      <br />
-      Currently you have {cart.length} products in your cart. They have the
-      following IDs:
-      {cart.map((item) => {
-        return item.id;
-      })}
+      This is a list of proucts. Happy shopping!
+      <div>
+        <br />
+        <h4>Cool! You already put {cart.length} products in your cart:</h4>
+        {/* {cart.map((item) => {
+          return item.id;
+        })} */}
+        <Merge cart={cart} />
+      </div>
       <ul>
         {products.map((product) => {
           return (
@@ -62,18 +62,6 @@ export default function ProductList() {
           );
         })}
       </ul>
-      {/* <Link href="/">
-          <a>
-            <img style={{ width: 500 }} src="burger-bun.jpg" alt=""></img>
-            <h3>Burger Buns</h3>
-            <br /> Ingredients: ....
-            <br />
-            Price : 1.5€ Min.
-            <br /> Order: 20 pcs
-            <br />
-            <input placeholder="20pcs"></input> <button>Add</button>
-          </a>
-        </Link> */}
     </Layout>
   );
 }
