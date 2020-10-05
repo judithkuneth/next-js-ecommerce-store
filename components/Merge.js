@@ -1,4 +1,4 @@
-import { products } from '../database';
+import { products } from '../database.js';
 
 export default function Merge(props) {
   const cartWithData = props.cart.map((item) => {
@@ -12,7 +12,7 @@ export default function Merge(props) {
     <div>
       {cartWithData.map((item) => {
         return (
-          <div>
+          <div key={item.id}>
             {' '}
             {item.count}x{item.name}{' '}
           </div>

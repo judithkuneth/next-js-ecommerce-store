@@ -2,18 +2,20 @@ import Link from 'next/link';
 import Layout from '../../components/Layout';
 import { products } from '../../database.js';
 import { useState } from 'react';
-import Merge from '../../components/Merge.js';
+// import Merge from '../../components/Merge.js';
+import nextCookies from 'next-cookies';
+import { addToCart } from '../../util/cookies.js';
 
 export default function ProductList() {
   const [cart, setCart] = useState([]);
   const [count, setCount] = useState(0);
-  console.log('hello');
-  console.log(products);
+  console.log('cart', cart);
+  console.log('products', products);
 
-  function addItem(id, name) {
+  function addItem(id) {
     console.log('add item');
-    const newCart = [...cart, { id: id, count: count, name: name }];
-    console.log(newCart);
+    const newCart = [...cart, { id: id, count: count }];
+    console.log('newCart', newCart);
     return setCart(newCart);
   }
 
@@ -28,7 +30,7 @@ export default function ProductList() {
         {/* {cart.map((item) => {
           return item.id;
         })} */}
-        <Merge cart={cart} />
+        {/* <Merge cart={cart} /> */}
       </div>
       <ul>
         {products.map((product) => {
@@ -53,7 +55,10 @@ export default function ProductList() {
                 ></input>
                 <button
                   key={product.id}
-                  onClick={() => addItem(`${product.id}`, `${product.name}`)}
+                  onClick={() => {
+                    addItem(`${product.id}`, `${product.name}`);
+                    addToCart(product.id, count);
+                  }}
                 >
                   Add
                 </button>
@@ -64,4 +69,16 @@ export default function ProductList() {
       </ul>
     </Layout>
   );
+}
+export function getServerSideProps(context) {
+  const allCookies = nextCookies(context);
+  const cart = allCookies.cart || [];
+  const id = allCookies.id || [];
+  console.log('getCartFromContext', cart);
+  return {
+    props: {
+      id: id,
+      cart: cart,
+    },
+  };
 }

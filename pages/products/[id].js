@@ -27,9 +27,14 @@ export default function Product(props) {
 }
 
 export function getServerSideProps(context) {
-  // context = {
-  //   query: { id: '1' },
-  //   params: { id: '1' },
+  // const allCookies = nextCookies(context);
+  // const cart = allCookies.cart || [];
+  //   return {
+  //     props: {
+  //       id: context.query.id,
+  //       cart: cart,
+  //     },
+  //   };
   // }
 
   return {
