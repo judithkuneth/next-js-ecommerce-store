@@ -9,26 +9,17 @@ import ShoppingCartComponentSmall from '../../components/ShoppingCartComponentSm
 export default function ProductList(props) {
   const [cart, setCart] = useState(props.cart);
   const [count, setCount] = useState(0);
-  // console.log('cart', cart);
-  console.log('products', products);
 
-  // function addItem(id) {
-  //   console.log('add item');
-  //   const newCart = [...cart, { id: id, count: count }];
-  //   console.log('setCart(newCart)', newCart);
-  //   return setCart(newCart);
-  // }
+  console.log('products', products);
 
   return (
     <Layout>
-      <h1>Products</h1>
-      This is a list of proucts. Happy shopping!
+      <h2>Happy Shopping!</h2>
       <div>
-        <br />
         <h4>
-          Cool! You already put {cart.length} products in your{' '}
+          You got {cart.length} products in your
           <Link href="./cart">
-            <a>cart</a>
+            <a> cart</a>
           </Link>
           :
         </h4>
@@ -59,7 +50,7 @@ export default function ProductList(props) {
                 <button
                   key={product.id}
                   onClick={() => {
-                    console.log('setCart & addToCookie');
+                    console.log('addToCookie, then setCart to newCart');
                     setCart(addToCookie(`${product.id}`, count));
                     // addToCookie(`${product.id}`, count); // duplicate work
                   }}

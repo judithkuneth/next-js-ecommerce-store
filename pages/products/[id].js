@@ -6,6 +6,7 @@ import { addToCookie } from '../../util/cookies.js';
 
 export default function Product(props) {
   const [count, setCount] = useState(0);
+
   const product = products.find((currentProduct) => {
     if (currentProduct.id === props.id) {
       return true;
