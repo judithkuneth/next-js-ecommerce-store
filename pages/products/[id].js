@@ -1,8 +1,11 @@
 import Head from 'next/head';
+import { useState } from 'react';
 import Layout from '../../components/Layout';
 import { products } from '../../database.js';
+import { addToCookie } from '../../util/cookies.js';
 
 export default function Product(props) {
+  const [count, setCount] = useState(0);
   const product = products.find((currentProduct) => {
     if (currentProduct.id === props.id) {
       return true;
@@ -20,8 +23,23 @@ export default function Product(props) {
       <h1>{product.name} </h1>
       <p>Price {product.price} € </p>
       <img style={{ height: 400 }} src={`../${product.image}.jpg`} alt=""></img>
-      <input placeholder="10"></input> pcs
-      <button>Add to Cart</button>
+      <input
+        onChange={(e) => {
+          console.log('count updated:', e.currentTarget.value);
+          setCount(e.currentTarget.value);
+        }}
+        placeholder="10"
+      ></input>{' '}
+      pcs
+      <button
+        key={product.id}
+        onClick={() => {
+          console.log('addToCookie');
+          addToCookie(`${product.id}`, count);
+        }}
+      >
+        Add to Cart
+      </button>
     </Layout>
   );
 }

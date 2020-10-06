@@ -1,8 +1,7 @@
 import Layout from '../../components/Layout';
 import Link from 'next/link';
-import ShoppingCartComponent from '../../components/ShoppingCartComponent.js';
 import { getCart } from '../../util/cookies.js';
-import Merge from '../../components/Merge.js';
+import ShoppingCartComponent from '../../components/ShoppingCartComponent';
 
 export default function ShoppingCart() {
   const cart = getCart();
@@ -13,18 +12,7 @@ export default function ShoppingCart() {
       <h3>Shopping Cart</h3>
       <h1>Your Shopping Cart</h1>
       <br />
-      <Merge cart={cart} />
-      This is the cart with data from the cookie:
-      <ul key={cart.productId}>
-        {cart.map((item) => {
-          return (
-            <li>
-              {item.id}, {item.count}
-            </li>
-          );
-        })}
-      </ul>
-      <ShoppingCartComponent />
+      <ShoppingCartComponent cart={cart} />
       <br />
       <Link href="./../checkout">
         <a>

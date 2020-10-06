@@ -20,9 +20,9 @@ export const products = [
 // add product to cart array
 // set cookie
 
-export const cart = [
-  {
-    productId: {},
-    count: {},
-  },
-];
+// export const cart = [
+//   {
+//     productId: {},
+//     count: {},
+//   },
+// ];

@@ -2,35 +2,37 @@ import Link from 'next/link';
 import Layout from '../../components/Layout';
 import { products } from '../../database.js';
 import { useState } from 'react';
-// import Merge from '../../components/Merge.js';
 import nextCookies from 'next-cookies';
-import { addToCart } from '../../util/cookies.js';
+import { addToCookie } from '../../util/cookies.js';
+import ShoppingCartComponentSmall from '../../components/ShoppingCartComponentSmall';
 
-export default function ProductList() {
-  const [cart, setCart] = useState([]);
+export default function ProductList(props) {
+  const [cart, setCart] = useState(props.cart);
   const [count, setCount] = useState(0);
-  console.log('cart', cart);
+  // console.log('cart', cart);
   console.log('products', products);
 
-  function addItem(id) {
-    console.log('add item');
-    const newCart = [...cart, { id: id, count: count }];
-    console.log('newCart', newCart);
-    return setCart(newCart);
-  }
+  // function addItem(id) {
+  //   console.log('add item');
+  //   const newCart = [...cart, { id: id, count: count }];
+  //   console.log('setCart(newCart)', newCart);
+  //   return setCart(newCart);
+  // }
 
   return (
     <Layout>
       <h1>Products</h1>
-      {/* {setCart(newCart)} */}
       This is a list of proucts. Happy shopping!
       <div>
         <br />
-        <h4>Cool! You already put {cart.length} products in your cart:</h4>
-        {/* {cart.map((item) => {
-          return item.id;
-        })} */}
-        {/* <Merge cart={cart} /> */}
+        <h4>
+          Cool! You already put {cart.length} products in your{' '}
+          <Link href="./cart">
+            <a>cart</a>
+          </Link>
+          :
+        </h4>
+        <ShoppingCartComponentSmall cart={cart} />
       </div>
       <ul>
         {products.map((product) => {
@@ -50,14 +52,16 @@ export default function ProductList() {
                 </Link>
                 <input
                   onChange={(e) => {
+                    console.log('count updated:', e.currentTarget.value);
                     setCount(e.currentTarget.value);
                   }}
                 ></input>
                 <button
                   key={product.id}
                   onClick={() => {
-                    addItem(`${product.id}`, `${product.name}`);
-                    addToCart(product.id, count);
+                    console.log('setCart & addToCookie');
+                    setCart(addToCookie(`${product.id}`, count));
+                    // addToCookie(`${product.id}`, count); // duplicate work
                   }}
                 >
                   Add
