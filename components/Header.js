@@ -1,5 +1,9 @@
 import Link from 'next/link';
+import { getCart } from '../util/cookies';
+
 export default function Header() {
+  const cart = getCart();
+  console.log(cart);
   return (
     <header
       style={{ height: 50, display: 'flex', justifyContent: 'space-between' }}
@@ -17,7 +21,10 @@ export default function Header() {
 
       <Link href="/cart">
         <a>
-          <img style={{ height: 50 }} src="/cart.png" alt="" />
+          <div>
+            {cart.length}
+            <img style={{ height: 50 }} src="/cart.png" alt="" />
+          </div>
         </a>
       </Link>
     </header>

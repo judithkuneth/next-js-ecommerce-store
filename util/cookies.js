@@ -1,19 +1,9 @@
 import cookie from 'js-cookie';
-import { products } from '../database';
 
 export function getCart() {
   const cart = cookie.getJSON('cart') || [];
   console.log('cookie.getJSON - getting Cookie', cart);
   return cart;
-}
-export function addToCookie(id, count) {
-  const cart = getCart();
-  const newCart = [...cart, { id: id, count: count }];
-
-  cookie.set('cart', newCart);
-  console.log('cookie.set', newCart);
-
-  return newCart;
 }
 
 export function removeFromCookie(id) {
@@ -26,17 +16,36 @@ export function removeFromCookie(id) {
   return newCart;
 }
 
-export function editCookie(id, count) {
+export function addToCookie(id, count) {
   const cart = getCart();
-  const index = cart.findIndex((item) => id === item.id);
-  console.log('index', index);
-  const newCart = [...cart];
-  newCart[index] = { ...newCart[index], count: count };
-  // const newCart = cart.find((item) => item.id === id);
+  const check = cart.filter((item) => item.id === id);
+  console.log('filter for id', id, 'in cart', cart, '... Result:', check);
 
-  cookie.set('cart', newCart);
-  console.log('updated cookie', newCart);
-  // console.log('removed item, updated cart', newCart);
+  function addItem(id, count) {
+    console.log('add to cookie');
+    // const cart = getCart();
 
-  return newCart;
+    const newCart = [...cart, { id: id, count: count }];
+
+    cookie.set('cart', newCart);
+    console.log('cookie.set: added item', newCart);
+
+    return newCart;
+  }
+
+  function editItem(id, count) {
+    console.log('edit cookie');
+    // const cart = getCart();
+    const index = cart.findIndex((item) => id === item.id);
+    console.log('index', index);
+    const newCart = [...cart];
+    newCart[index] = { ...newCart[index], count: count };
+
+    cookie.set('cart', newCart);
+    console.log('cookie.set: updated item.count', newCart);
+    // console.log('removed item, updated cart', newCart);
+
+    return newCart;
+  }
+  return check.length < 1 ? addItem(id, count) : editItem(id, count);
 }
