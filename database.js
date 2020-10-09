@@ -13,7 +13,7 @@ export const products = [
   },
   {
     id: '5',
-    name: 'Apfel-Rhabarber Kuchen 40x60',
+    name: 'Apfel-Rhabarber Kuchen',
     price: 55,
 
     image: 'apfel-rhabarber',

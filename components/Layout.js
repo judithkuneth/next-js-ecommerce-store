@@ -6,11 +6,11 @@ export default function Layout(props) {
     <div>
       <Head>
         <title>Bäckerei Schrott</title>
-        <link rel="icon" href="/logo.ico" />
+        <link rel="icon" href="/logo.png" />
       </Head>
       <Header />
 
-      <main style={{ padding: 30 }}>{props.children}</main>
+      <main style={{ padding: 20 }}>{props.children}</main>
       <Footer />
     </div>
   );

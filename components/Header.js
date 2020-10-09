@@ -1,23 +1,55 @@
+/** @jsx jsx */
+/** @jsxFrag React.Fragment */
+import { jsx, css } from '@emotion/core';
 import Link from 'next/link';
 import { getCart } from '../util/cookies';
+
+const headerStyles = css`
+  position: fixed;
+  width: 90%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 8px 8px 8px;
+  padding: 20px;
+  background-color: #fffcf2;
+
+  a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    margin: 12px;
+    color: #1b1c1d;
+    div {
+      font-size: 18px;
+    }
+  }
+`;
 
 export default function Header() {
   const cart = getCart();
   console.log(cart);
   return (
-    <header
-      style={{ height: 50, display: 'flex', justifyContent: 'space-between' }}
-    >
+    <header css={headerStyles}>
       <Link href="/">
         <a>
           {' '}
-          <img style={{ height: 50 }} src="/logo.png" alt="" />
+          <img style={{ height: 60 }} src="/logo.png" alt="" />
         </a>
       </Link>
-
-      <Link href="/products">
-        <a>Products</a>
-      </Link>
+      <nav>
+        <Link href="/products">
+          <a>Shop</a>
+        </Link>
+        <Link href="/products">
+          <a>About</a>
+        </Link>
+        <Link href="/products">
+          <a>Contact</a>
+        </Link>
+      </nav>
 
       <Link href="/cart">
         <a>
