@@ -23,14 +23,14 @@ export default function Product(props) {
       <p>Product Id {props.id}</p>
       <h1>{product.name} </h1>
       <p>Price {product.price} € </p>
-      <img style={{ height: 400 }} src={`../${product.image}.jpg`} alt=""></img>
+      <img style={{ height: 400 }} src={`../${product.image}.jpg`} alt="" />
       <input
         onChange={(e) => {
           console.log('count updated:', e.currentTarget.value);
           setCount(e.currentTarget.value);
         }}
         placeholder="10"
-      ></input>{' '}
+      />
       pcs
       <button
         key={product.id}

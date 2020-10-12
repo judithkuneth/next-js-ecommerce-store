@@ -1,9 +1,10 @@
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */
+
 import { jsx, css } from '@emotion/core';
 import Link from 'next/link';
 import Layout from '../../components/Layout';
-import { products } from '../../database.js';
+// import { products } from '../../database.js';
 import { useState } from 'react';
 import nextCookies from 'next-cookies';
 import { addToCookie } from '../../util/cookies.js';
@@ -64,6 +65,7 @@ const inputStyles = css`
 export default function ProductList(props) {
   const [cart, setCart] = useState(props.cart);
   const [count, setCount] = useState(0);
+  console.log('getCartFromContext', props.cart);
   function addToEdit(id) {
     document.getElementById(id).innerHTML = 'Update';
   }
@@ -71,7 +73,7 @@ export default function ProductList(props) {
     <Layout>
       <div style={{ padding: 10 }}>
         <h4>{cart.length} products in your cart</h4>
-        <ShoppingCartComponentSmall cart={cart} />
+        <ShoppingCartComponentSmall cart={cart} products={props.products} />
         <h4>
           Checkout
           <Link href="./cart">
@@ -86,7 +88,7 @@ export default function ProductList(props) {
         </h4>
       </div>
       <section css={productsStyles}>
-        {products.map((product) => {
+        {props.products.map((product) => {
           return (
             // <productComponent product={product} cart={cart} count={count} />
             <React.Fragment key={product.id}>
@@ -151,13 +153,17 @@ export default function ProductList(props) {
     </Layout>
   );
 }
-export function getServerSideProps(context) {
+export async function getServerSideProps(context) {
+  // import { products } from '../../database.js';
+  const { getProducts } = await import('../../database');
+  const products = await getProducts();
   const allCookies = nextCookies(context);
   const cart = allCookies.cart || [];
   const id = allCookies.id || [];
-  console.log('getCartFromContext', cart);
+
   return {
     props: {
+      products: products,
       id: id,
       cart: cart,
     },

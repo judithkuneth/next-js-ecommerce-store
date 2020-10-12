@@ -1,9 +1,9 @@
-import { products } from '../database';
+// import { products } from '../database';
 
 export default function ShoppingCartComponentSmall(props) {
   const cartWithData = props.cart.map((item) => ({
     ...item,
-    ...products.find((product) => product.id === item.id),
+    ...props.products.find((product) => product.id === item.id),
   }));
   console.log('Small component created new array! cartWithData:', cartWithData);
   return (
