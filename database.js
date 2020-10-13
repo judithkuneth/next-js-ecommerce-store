@@ -1,21 +1,34 @@
 import postgres from 'postgres';
 import dotenv from 'dotenv';
-require('dotenv').config();
+import { useReducer } from 'react';
+import camelcaseKeys from 'camelcase-keys';
 
+require('dotenv').config();
 dotenv.config();
 
 const sql = postgres();
 
-// If you want to use the connection string instead for testing,
-// you can try this:
-//
-// const sql = postgres('postgres://username:password@localhost:5432/database')
+//// Alternative: use the connection string instead:
+// const sql = postgres(
+//   'postgres://username:password@localhost:5432/databasename',
+// );
 
 export async function getProducts() {
   const products = await sql`
   SELECT * from products;
 `;
-  return products;
+
+  return products.map(camelcaseKeys);
+
+  //// alternative: do it without camelcaseKeys library like this:
+  // return products.map((product) => {
+  //   return {
+  //     productId: product.product_id,
+  //     id: product.id,
+  //     name: product.name,
+  //     price: product.price,
+  //   };
+  // });
 }
 
 // export const products = [

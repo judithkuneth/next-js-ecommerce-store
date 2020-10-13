@@ -66,6 +66,8 @@ export default function ProductList(props) {
   const [cart, setCart] = useState(props.cart);
   const [count, setCount] = useState(0);
   console.log('getCartFromContext', props.cart);
+  console.log('test', props.products);
+
   function addToEdit(id) {
     document.getElementById(id).innerHTML = 'Update';
   }
@@ -73,7 +75,7 @@ export default function ProductList(props) {
     <Layout>
       <div style={{ padding: 10 }}>
         <h4>{cart.length} products in your cart</h4>
-        <ShoppingCartComponentSmall cart={cart} products={props.products} />
+        {/* <ShoppingCartComponentSmall cart={cart} products={props.products} /> */}
         <h4>
           Checkout
           <Link href="./cart">
@@ -95,11 +97,11 @@ export default function ProductList(props) {
               <div css={productStyles}>
                 <Link css={productStyles} href={`/products/${product.id}`}>
                   <a>
-                    <img
+                    {/* <img
                       style={{ height: 200 }}
                       src={`../${product.image}.jpg`}
                       alt="some bread"
-                    />
+                    /> */}
 
                     <br />
                     <h2>{product.name}</h2>
@@ -160,6 +162,7 @@ export async function getServerSideProps(context) {
   const allCookies = nextCookies(context);
   const cart = allCookies.cart || [];
   const id = allCookies.id || [];
+  console.log('test', products);
 
   return {
     props: {

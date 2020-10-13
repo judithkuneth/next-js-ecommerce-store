@@ -3,10 +3,10 @@ import Layout from '../components/Layout.js';
 import { snacks } from '../db';
 import nextCookies from 'next-cookies';
 import { addSnack } from '../util/cookies.js';
-// import { useState } from 'react';
+import { useState } from 'react';
 
 export default function Home(props) {
-  // const [snackCart, setSnackCart] = useState(props.snackCart);
+  const [snackCart, setSnackCart] = useState(props.snackCart);
   return (
     <Layout>
       <Head />
@@ -15,12 +15,12 @@ export default function Home(props) {
 
       <p>Pimp your burger and find the best handmade organic bread in town</p>
       <section>
-        {/* <div>
+        <div>
           {' '}
           {snackCart.map((item) => {
             return <div>{item.id}</div>;
           })}
-        </div> */}
+        </div>
         <li>
           {snacks.map((snack) => {
             return (
@@ -29,7 +29,7 @@ export default function Home(props) {
                 <button
                   id={snack.id}
                   onClick={(e) => {
-                    addSnack(snack.id);
+                    setSnackCart(addSnack(snack.id));
                   }}
                 >
                   {' '}
