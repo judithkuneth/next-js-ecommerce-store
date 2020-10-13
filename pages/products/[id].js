@@ -1,20 +1,34 @@
 import Head from 'next/head';
 import { useState } from 'react';
 import Layout from '../../components/Layout';
-import { products } from '../../database.js';
+// import { products } from '../../database.js';
 import { addToCookie } from '../../util/cookies.js';
 
 export default function Product(props) {
   const [count, setCount] = useState(0);
 
-  const product = products.find((currentProduct) => {
-    if (currentProduct.id === props.id) {
-      return true;
-    }
+  const product = props.product;
 
-    return false;
-  });
+  //// do it this way if product is not retrieved from serversideprops: import products from db and
+  // const product = products.find((currentProduct) => {
+  //   if (currentProduct.id === props.id) {
+  //     return true;
+  //   }
 
+  //   return false;
+  // });
+  if (!props.product)
+    return (
+      <Layout>
+        <Head>
+          <title>User not found</title>
+        </Head>
+        <h1>user not found</h1>
+        <h1>Whoooops</h1>
+        <h1>user not found</h1>
+        <h1>Try another one</h1>
+      </Layout>
+    );
   return (
     <Layout>
       <Head>
@@ -23,7 +37,7 @@ export default function Product(props) {
       <p>Product Id {props.id}</p>
       <h1>{product.name} </h1>
       <p>Price {product.price} € </p>
-      <img style={{ height: 400 }} src={`../${product.image}.jpg`} alt="" />
+      <img style={{ height: 400 }} src={`../${product.id}.jpg`} alt="" />
       <input
         onChange={(e) => {
           console.log('count updated:', e.currentTarget.value);
@@ -45,18 +59,15 @@ export default function Product(props) {
   );
 }
 
-export function getServerSideProps(context) {
-  // const allCookies = nextCookies(context);
-  // const cart = allCookies.cart || [];
-  //   return {
-  //     props: {
-  //       id: context.query.id,
-  //       cart: cart,
-  //     },
-  //   };
-  // }
+export async function getServerSideProps(context) {
+  const id = context.query.id;
+  const { getProductById } = await import('../../database');
+  const product = await getProductById(id);
+  console.log('products', product);
 
+  const props = {};
+  if (product) props.product = product;
   return {
-    props: { id: context.query.id },
+    props: props,
   };
 }
