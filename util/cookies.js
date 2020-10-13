@@ -5,6 +5,23 @@ export function getCart() {
   console.log('cookie.getJSON - getting Cookie', cart);
   return cart;
 }
+export function getSnack() {
+  const snackCart = cookie.getJSON('snackCart') || [];
+  console.log('cookie.getJSON - getting Cookie', snackCart);
+  return snackCart;
+}
+
+export function addSnack(id) {
+  console.log('add to cookie');
+  // const cart = getCart();
+  const snackCart = getSnack();
+  const newSnackCart = [...snackCart, { id: id }];
+
+  cookie.set('snackCart', newSnackCart);
+  console.log('cookie.set: added item', newSnackCart);
+
+  return newSnackCart;
+}
 
 export function removeFromCookie(id) {
   const cart = getCart();
