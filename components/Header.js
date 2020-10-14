@@ -6,7 +6,7 @@ import { getCart } from '../util/cookies';
 
 const headerStyles = css`
   position: fixed;
-  width: 90%;
+  width: 100%;
   height: 50px;
   display: flex;
   justify-content: space-between;
@@ -55,7 +55,11 @@ export default function Header() {
         <a>
           <div>
             {cart.length}
-            <img style={{ height: 50 }} src="/cart.png" alt="" />
+            <img
+              style={{ height: 50, marginRight: 70 }}
+              src="/cart.png"
+              alt="Go to Shopping Cart"
+            />
           </div>
         </a>
       </Link>

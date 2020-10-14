@@ -14,7 +14,7 @@ export default function Home(props) {
       <h1>Welcome at Josef Schrott!</h1>
 
       <p>Pimp your burger and find the best handmade organic bread in town</p>
-      <section>
+      {/* <section>
         <div>
           {' '}
           {snackCart.map((item) => {
@@ -39,9 +39,19 @@ export default function Home(props) {
             );
           })}
         </li>
-      </section>
+      </section> */}
 
-      <img style={{ height: 500 }} src="title.jpg" alt="" />
+      <img
+        style={{ height: 300, borderRadius: '50%' }}
+        src="titleBread.jpg"
+        alt=""
+      />
+      <img
+        style={{ height: 300, borderRadius: '50%' }}
+        src="breakfast.jpg"
+        alt=""
+      />
+      <img style={{ height: 300, borderRadius: '50%' }} src="pie.jpg" alt="" />
 
       <footer />
     </Layout>

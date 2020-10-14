@@ -1,49 +1,75 @@
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */
 import { jsx, css } from '@emotion/core';
-import { products } from '../database';
+// import { products } from '../database';
 import { useState } from 'react';
 import { removeFromCookie, addToCookie } from '../util/cookies.js';
 import Counter from '../components/Counter';
 
+const pageStyles = css`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+`;
 const productsStyles = css`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: space-between;
+  /* flex-grow: 2; */
 `;
 const productStyles = css`
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: flex-start;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  /* align-items: flex-start;
+  justify-content: flex-start; */
+
   margin: 8px;
 
-  img {
+  /* img {
     margin-bottom: 4px;
-  }
-
-  a {
-    text-decoration: none;
-    color: black;
-  }
+  } */
 `;
 
-const addButtonStyles = css`
+const detailStyles = css`
+  display: flex;
+  flex-direction: column;
+  /* flex-grow: 1; */
+  /* justify-content: space-between; */
+`;
+const titleStyles = css`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-weight: bold;
+  width: 110%;
+`;
+const ctaStyles = css`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`;
+
+const updateButtonStyles = css`
   background-color: #f4ea80;
   border-radius: 8px;
   padding: 6px;
+  margin: 8px;
   font-size: 14px;
-  width: 10%;
+  width: 80px;
   cursor: pointer;
 `;
 
 const removeButtonStyles = css`
-  background-color: #ffff;
+  background-color: #b5babf4d;
   border-radius: 8px;
   padding: 6px;
+  margin: 8px;
   font-size: 14px;
-  width: 10%;
+  width: 80px;
   cursor: pointer;
 `;
 
@@ -53,7 +79,7 @@ const inputStyles = css`
   padding: 6px;
   margin: 8px;
   font-size: 14px;
-  width: 10%;
+  width: 50px;
   text-align: center;
   :focus {
     box-shadow: 0 0 3pt 2pt #e69b20;
@@ -67,60 +93,73 @@ export default function ShoppingCartComponent(props) {
   const [cart, setCart] = useState(props.cart);
   const cartWithData = cart.map((item) => ({
     ...item,
-    ...products.find((product) => product.id === item.id),
+    ...props.products.find((product) => product.id === item.id),
   }));
   console.log('created new array! cartWithData:', cartWithData);
 
   return (
-    <div css={productsStyles}>
-      <Counter cartWithData={cartWithData} />
+    <div css={pageStyles}>
+      <div css={productsStyles}>
+        {cartWithData.map((item) => {
+          return (
+            <React.Fragment key={item.id}>
+              <div css={productStyles}>
+                <div>
+                  <img
+                    style={{ height: 125, marginRight: 50 }}
+                    src={`../${item.id}.jpg`}
+                    alt=""
+                  />
+                </div>
+                <div css={detailStyles}>
+                  <div css={titleStyles}>
+                    <h2>{item.name}</h2> <h4>€{item.price}</h4>
+                  </div>
+                  {/* <p>
+                {item.count} x {item.price}€ = {item.count * item.price}€
+              </p> */}
+                  <br />
+                  <div css={ctaStyles}>
+                    <input
+                      css={inputStyles}
+                      id={item.id}
+                      defaultValue={item.count}
+                      onChange={(e) => setCount(e.currentTarget.value)}
+                    />
+                    <button
+                      css={updateButtonStyles}
+                      key={item.id}
+                      onClick={(e) => {
+                        console.log('update item');
+                        setCart(addToCookie(`${item.id}`, count));
+                      }}
+                    >
+                      Update
+                    </button>
 
-      {cartWithData.map((item) => {
-        return (
-          <React.Fragment key={item.id}>
-            <div css={productStyles}>
-              <img
-                style={{ height: 100 }}
-                src={`../${item.image}.jpg`}
-                alt=""
-              />
-              <h3>{item.name}</h3>
-              <p>
-                {item.count} x {item.price}€
-              </p>
-              <input
-                css={inputStyles}
-                id={item.id}
-                defaultValue={item.count}
-                onChange={(e) => setCount(e.currentTarget.value)}
-              />
-              <button
-                css={addButtonStyles}
-                key={item.id}
-                onClick={(e) => {
-                  console.log('update item');
-                  setCart(addToCookie(`${item.id}`, count));
-                }}
-              >
-                Update Qty
-              </button>
-
-              <button
-                css={removeButtonStyles}
-                key={item.id}
-                onClick={(e) => {
-                  console.log('remove item');
-                  setCart(removeFromCookie(`${item.id}`));
-                  // addToCookie(`${product.id}`, count); // duplicate work
-                }}
-              >
-                Remove
-              </button>
-            </div>
-          </React.Fragment>
-        );
-      })}
-      <Counter cartWithData={cartWithData} />
+                    <button
+                      css={removeButtonStyles}
+                      key={item.id}
+                      onClick={(e) => {
+                        console.log('remove item with id', item.id);
+                        setCart(removeFromCookie(`${item.id}`));
+                      }}
+                    >
+                      Remove
+                    </button>
+                  </div>
+                </div>
+                {/* <div style={{ flexGrow: 3, fontWeight: 'bold' }}>
+                €{item.price}
+              </div> */}
+              </div>
+            </React.Fragment>
+          );
+        })}
+      </div>
+      <div>
+        <Counter cartWithData={cartWithData} />
+      </div>
     </div>
   );
 }

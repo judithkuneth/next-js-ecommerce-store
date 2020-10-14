@@ -74,20 +74,9 @@ export default function ProductList(props) {
   return (
     <Layout>
       <div style={{ padding: 10 }}>
-        <h4>{cart.length} products in your cart</h4>
+        {' '}
+        <h4>You have {cart.length} products in your cart</h4>
         <ShoppingCartComponentSmall cart={cart} products={props.products} />
-        <h4>
-          Checkout
-          <Link href="./cart">
-            <a>
-              <img
-                src="/cart.png"
-                alt=""
-                style={{ height: 30, paddingLeft: 10 }}
-              />
-            </a>
-          </Link>
-        </h4>
       </div>
       <section css={productsStyles}>
         {props.products.map((product) => {
