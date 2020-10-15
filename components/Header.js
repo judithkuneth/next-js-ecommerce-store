@@ -11,8 +11,8 @@ const headerStyles = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0px 8px 8px 8px;
-  padding: 20px;
+  margin: 0px 0px 0px 0px;
+  padding: 20px 0px 0px 0px;
   background-color: #fffcf2;
 
   a {

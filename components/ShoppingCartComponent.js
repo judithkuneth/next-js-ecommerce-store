@@ -17,27 +17,15 @@ const productsStyles = css`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  /* flex-grow: 2; */
 `;
 const productStyles = css`
   display: flex;
   flex-direction: row;
-  /* flex-wrap: wrap; */
-  /* align-items: flex-start;
-  justify-content: flex-start; */
-
   margin: 8px;
-
-  /* img {
-    margin-bottom: 4px;
-  } */
 `;
-
 const detailStyles = css`
   display: flex;
   flex-direction: column;
-  /* flex-grow: 1; */
-  /* justify-content: space-between; */
 `;
 const titleStyles = css`
   display: flex;
@@ -52,7 +40,6 @@ const ctaStyles = css`
   flex-direction: row;
   flex-wrap: wrap;
 `;
-
 const updateButtonStyles = css`
   background-color: #f4ea80;
   border-radius: 8px;
@@ -62,7 +49,6 @@ const updateButtonStyles = css`
   width: 80px;
   cursor: pointer;
 `;
-
 const removeButtonStyles = css`
   background-color: #b5babf4d;
   border-radius: 8px;
@@ -72,7 +58,6 @@ const removeButtonStyles = css`
   width: 80px;
   cursor: pointer;
 `;
-
 const inputStyles = css`
   background-color: #ffff;
   border-radius: 8px;
@@ -115,9 +100,6 @@ export default function ShoppingCartComponent(props) {
                   <div css={titleStyles}>
                     <h2>{item.name}</h2> <h4>€{item.price}</h4>
                   </div>
-                  {/* <p>
-                {item.count} x {item.price}€ = {item.count * item.price}€
-              </p> */}
                   <br />
                   <div css={ctaStyles}>
                     <input
@@ -149,9 +131,6 @@ export default function ShoppingCartComponent(props) {
                     </button>
                   </div>
                 </div>
-                {/* <div style={{ flexGrow: 3, fontWeight: 'bold' }}>
-                €{item.price}
-              </div> */}
               </div>
             </React.Fragment>
           );

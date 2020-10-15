@@ -5,7 +5,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: #1b1c1d;
   background-color: #fffcf2;
-  line-height: 1.4;
+  line-height: 1;
 }
 a {
   text-decoration: none;
@@ -40,8 +40,23 @@ h4 {
   margin: 0;
 }
 
+select {
+  background-color: #ffff;
+  border-radius: 8px;
+  padding: 6px;
+  margin: 8px;
+  font-size: 14px;
+  width: 10%;
+  text-align: center;
+}
 input {
-  border-color: #b5babf;
+  background-color: #ffff;
+  border-radius: 8px;
+  padding: 6px;
+  margin: 8px;
+  font-size: 14px;
+  width: 10%;
+  text-align: center;
 }
 
 code {

@@ -10,7 +10,7 @@ export default function Layout(props) {
       </Head>
       <Header />
 
-      <main style={{ padding: 20, paddingTop: 80 }}>{props.children}</main>
+      <main style={{ padding: 0, paddingTop: 80 }}>{props.children}</main>
       <Footer />
     </div>
   );

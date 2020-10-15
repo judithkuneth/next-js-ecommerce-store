@@ -24,10 +24,6 @@ const productStyles = css`
   align-items: flex-start;
   margin: 8px;
 
-  /* width: 250px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  text-align: center; */
-
   img {
     margin-bottom: 4px;
   }
@@ -37,7 +33,6 @@ const productStyles = css`
     color: black;
   }
 `;
-
 const addButtonStyles = css`
   background-color: #f4ea80;
   border-radius: 8px;
@@ -46,7 +41,6 @@ const addButtonStyles = css`
   width: 25%;
   cursor: pointer;
 `;
-
 const inputStyles = css`
   background-color: #ffff;
   border-radius: 8px;
@@ -81,65 +75,62 @@ export default function ProductList(props) {
       <section css={productsStyles}>
         {props.products.map((product) => {
           return (
-            <>
-              {/* <productComponent product={product} cart={cart} count={count} /> */}
-              <React.Fragment key={product.id}>
-                <div css={productStyles}>
-                  <Link css={productStyles} href={`/products/${product.id}`}>
-                    <a>
-                      <img
-                        style={{ height: 200 }}
-                        src={`../${product.id}.jpg`}
-                        alt="some bread"
-                      />
+            <React.Fragment key={product.id}>
+              <div css={productStyles}>
+                <Link css={productStyles} href={`/products/${product.id}`}>
+                  <a>
+                    <img
+                      style={{ height: 200 }}
+                      src={`../${product.id}.jpg`}
+                      alt="some bread"
+                    />
 
-                      <br />
-                      <h2>{product.name}</h2>
-                    </a>
-                  </Link>
+                    <br />
+                    <h2>{product.name}</h2>
+                  </a>
+                </Link>
+                <div
+                  style={{
+                    alignItems: 'center',
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                  }}
+                >
+                  <h3>€{product.price}</h3>
                   <div
                     style={{
                       alignItems: 'center',
                       display: 'flex',
                       flexDirection: 'row',
-                      justifyContent: 'flex-start',
+                      justifyContent: 'flex-end',
                     }}
                   >
-                    <h3>€{product.price}</h3>
-                    <div
-                      style={{
-                        alignItems: 'center',
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'flex-end',
+                    <input
+                      css={inputStyles}
+                      placeholder="0"
+                      onChange={(e) => {
+                        console.log('count updated:', e.currentTarget.value);
+                        setCount(e.currentTarget.value);
+                      }}
+                    />
+                    <button
+                      css={addButtonStyles}
+                      key={product.id}
+                      value="Add"
+                      id={`${product.id}`}
+                      onClick={() => {
+                        console.log('addToCookie, setCart(newCart)');
+                        setCart(addToCookie(`${product.id}`, count));
+                        addToEdit(`${product.id}`);
                       }}
                     >
-                      <input
-                        css={inputStyles}
-                        placeholder="0"
-                        onChange={(e) => {
-                          console.log('count updated:', e.currentTarget.value);
-                          setCount(e.currentTarget.value);
-                        }}
-                      />
-                      <button
-                        css={addButtonStyles}
-                        key={product.id}
-                        value="Add"
-                        id={`${product.id}`}
-                        onClick={() => {
-                          console.log('addToCookie, setCart(newCart)');
-                          setCart(addToCookie(`${product.id}`, count));
-                          addToEdit(`${product.id}`);
-                        }}
-                      >
-                        Add
-                      </button>
-                    </div>
+                      Add
+                    </button>
                   </div>
                 </div>
-              </React.Fragment>
-            </>
+              </div>
+            </React.Fragment>
           );
         })}
       </section>
@@ -147,7 +138,6 @@ export default function ProductList(props) {
   );
 }
 export async function getServerSideProps(context) {
-  // import { products } from '../../database.js';
   const { getProducts } = await import('../../database');
   const products = await getProducts();
   const allCookies = nextCookies(context);
