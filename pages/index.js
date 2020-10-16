@@ -6,9 +6,6 @@ import Layout from '../components/Layout.js';
 import nextCookies from 'next-cookies';
 import { ImageSection } from '../components/ImageSection.js';
 
-const landingpageStyles = css`
-  padding-top: 0;
-`;
 const backgroundStyles = css`
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url('titleBread.jpg');
@@ -39,13 +36,13 @@ const backgroundTitleStyles = css`
 `;
 export default function Home(props) {
   return (
-    <div css={landingpageStyles}>
+    <div>
       <Layout>
         <section css={backgroundStyles}>
           <div css={backgroundTitleStyles}>
             <h1>Leidenschaft</h1>
             <h1>Handarbeit</h1>
-            <h1> Tradition</h1>
+            <h1>Tradition</h1>
             <h2>seit 1885</h2>
           </div>
         </section>

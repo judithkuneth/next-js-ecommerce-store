@@ -5,14 +5,16 @@ import Link from 'next/link';
 import { getCart } from '../util/cookies';
 
 const headerStyles = css`
+  display: flex;
+  align-items: center;
   position: fixed;
   width: 100%;
-  height: 50px;
+  height: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0px 0px 0px 0px;
-  padding: 20px 0px 0px 0px;
+  /* padding: 0px 0px 0px 0px; */
   background-color: #fffcf2;
 
   a {

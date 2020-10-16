@@ -27,7 +27,8 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.js",
-    "db-connect.mjs"
+    "db-connect.mjs",
+    "components/_tests_/cartSum.test.txt"
   ],
   "exclude": ["node_modules"]
 }
