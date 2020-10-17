@@ -2,6 +2,7 @@
 /** @jsxFrag React.Fragment */
 import { jsx, css } from '@emotion/core';
 import Link from 'next/link';
+import { cartSum } from './CartSum';
 
 const buyButtonStyles = css`
   background-color: #f4ea80;
@@ -30,11 +31,9 @@ const checkOutStyles = css`
 `;
 
 export default function Counter(props) {
-  const subTotalPerItem = props.cartWithData.map((item) => {
-    return item.price * item.count;
-  });
+  const cartWithData = props.cartWithData;
 
-  const countPerItemString = props.cartWithData.map((item) => {
+  const countPerItemString = cartWithData.map((item) => {
     return item.count;
   });
 
@@ -43,19 +42,16 @@ export default function Counter(props) {
   const totalCount = countPerItemInt.reduce(function (a, b) {
     return a + b;
   }, 0);
+  const sum = cartSum(cartWithData);
 
-  const totalPrice = subTotalPerItem.reduce(function (a, b) {
-    return a + b;
-  }, 0);
-
-  const totalPriceRounded = Math.round(totalPrice * 100) / 100;
+  // const totalPriceRounded = Math.round(totalPrice * 100) / 100;
 
   // const total = cartWithData.reduce((prev, cur) => prev + cur.price);
   // console.log('total', total);
   return (
     <div css={checkOutStyles}>
       <h4>
-        Subtotal ({totalCount} Items) : {totalPriceRounded} €
+        Subtotal ({totalCount} Items): € {sum}
       </h4>
       <Link href="./../checkout">
         <a>

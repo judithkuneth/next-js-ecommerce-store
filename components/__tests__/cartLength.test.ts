@@ -5,12 +5,12 @@ afterEach(() => {
   cookie.remove('cart');
 });
 
-test('update count if item exists', () => {
+test('update count if item already in cookie', () => {
   addToCookie(26, '2');
   expect(addToCookie(26, '3').length).toBe(1);
 });
 
-test('show number of products in cart', () => {
+test('add new item to cookie', () => {
   addToCookie(26, '9');
   addToCookie(2, '1');
   expect(addToCookie(5, '5').length).toBe(3);
