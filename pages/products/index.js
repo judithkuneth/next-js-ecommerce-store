@@ -107,6 +107,8 @@ export default function ProductList(props) {
                     }}
                   >
                     <input
+                      key={product.id}
+                      data-cy={`product-id-${product.id}-amount`}
                       css={inputStyles}
                       placeholder="0"
                       onChange={(e) => {

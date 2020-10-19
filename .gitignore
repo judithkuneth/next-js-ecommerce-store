@@ -35,3 +35,6 @@ yarn-error.log*
 
 #.env
 .env
+
+#cypress
+cypress/integration/examples
