@@ -1,21 +1,21 @@
 const products = [
   {
-    product_id: '26',
+    id: '26',
     name: 'Burger Buns',
     price: 0.87,
   },
   {
-    product_id: '436',
+    id: '436',
     name: 'Krapfen',
     price: 1.2,
   },
   {
-    product_id: '5',
+    id: '5',
     name: 'Apfel-Rhabarber Kuchen',
     price: 55,
   },
   {
-    product_id: '301',
+    id: '301',
     name: 'Hausbrot',
     price: 3.6,
   },
@@ -23,7 +23,7 @@ const products = [
 
 exports.up = async (sql) => {
   await sql`
-	INSERT INTO products ${sql(products, 'product_id', 'name', 'price')}
+	INSERT INTO products ${sql(products, 'id', 'name', 'price')}
 `;
 };
 
