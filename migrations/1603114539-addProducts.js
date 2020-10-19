@@ -23,7 +23,7 @@ const products = [
 
 exports.up = async (sql) => {
   await sql`
-	INSERT INTO products ${sql(products, 'productId', 'name', 'price')}
+	INSERT INTO products ${sql(products, 'product_id', 'name', 'price')}
 `;
 };
 
