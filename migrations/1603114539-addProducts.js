@@ -1,21 +1,21 @@
 const products = [
   {
-    productId: '26',
+    product_id: '26',
     name: 'Burger Buns',
     price: 0.87,
   },
   {
-    productId: '436',
+    product_id: '436',
     name: 'Krapfen',
     price: 1.2,
   },
   {
-    productId: '5',
+    product_id: '5',
     name: 'Apfel-Rhabarber Kuchen',
     price: 55,
   },
   {
-    productId: '301',
+    product_id: '301',
     name: 'Hausbrot',
     price: 3.6,
   },
