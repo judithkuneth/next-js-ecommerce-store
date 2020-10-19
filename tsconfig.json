@@ -30,5 +30,5 @@
     "db-connect.mjs",
     "components/_tests_/cartSum.test.txt"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["cypress", "node_modules"]
 }
