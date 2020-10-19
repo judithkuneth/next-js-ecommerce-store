@@ -42,7 +42,7 @@ export async function getProducts() {
 }
 
 export async function getProductById(id) {
-  //test with regex if id is a number with min. one digit and is a number
+  //test with regex if id is a number with min. one digit
   if (!/^\d+$/.test(id)) return undefined;
   const products = await sql`
 SELECT * from products WHERE id =${id} ;
