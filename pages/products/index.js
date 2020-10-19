@@ -78,7 +78,7 @@ export default function ProductList(props) {
             <React.Fragment key={product.id}>
               <div css={productStyles}>
                 <Link css={productStyles} href={`/products/${product.id}`}>
-                  <a>
+                  <a data-cy={`product-id-${product.id}`}>
                     <img
                       style={{ height: 200 }}
                       src={`../${product.id}.jpg`}
@@ -118,6 +118,7 @@ export default function ProductList(props) {
                     />
                     <button
                       css={addButtonStyles}
+                      data-cy={`button-add-product-id-${product.id}`}
                       key={product.id}
                       value="Add"
                       id={`${product.id}`}

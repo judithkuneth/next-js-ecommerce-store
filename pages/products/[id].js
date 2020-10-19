@@ -69,6 +69,7 @@ export default function Product(props) {
       <img style={{ height: 300 }} src={`../${product.id}.jpg`} alt="" />
       <br />
       <input
+        data-cy={`input-product-id${product.id}`}
         css={inputStyles}
         onChange={(e) => {
           console.log('count updated:', e.currentTarget.value);
@@ -77,6 +78,7 @@ export default function Product(props) {
         placeholder="10"
       />
       <button
+        data-cy={`button-add-product-id${product.id}`}
         css={addButtonStyles}
         key={product.id}
         onClick={() => {

@@ -43,13 +43,13 @@ export default function Header() {
       </Link>
       <nav>
         <Link href="/products">
-          <a>Shop</a>
+          <a data-cy="header-link-shop">Shop</a>
         </Link>
         <Link href="/products">
-          <a>About</a>
+          <a data-cy="header-link-about">About</a>
         </Link>
         <Link href="/products">
-          <a>Contact</a>
+          <a data-cy="header-link-contact">Contact</a>
         </Link>
       </nav>
 
@@ -58,6 +58,7 @@ export default function Header() {
           <div>
             {cart.length}
             <img
+              data-cy="header-link-cart"
               style={{ height: 50, marginRight: 70 }}
               src="/cart.png"
               alt="Go to Shopping Cart"

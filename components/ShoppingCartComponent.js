@@ -103,12 +103,14 @@ export default function ShoppingCartComponent(props) {
                   <br />
                   <div css={ctaStyles}>
                     <input
+                      data-cy={`input-product-id-${item.id}`}
                       css={inputStyles}
                       id={item.id}
                       defaultValue={item.count}
                       onChange={(e) => setCount(e.currentTarget.value)}
                     />
                     <button
+                      data-cy={`button-update-product-id-${item.id}`}
                       css={updateButtonStyles}
                       key={item.id}
                       onClick={(e) => {
@@ -120,6 +122,7 @@ export default function ShoppingCartComponent(props) {
                     </button>
 
                     <button
+                      data-cy={`button-remove-product-id-${item.id}`}
                       css={removeButtonStyles}
                       key={item.id}
                       onClick={(e) => {

@@ -55,7 +55,9 @@ export default function Counter(props) {
       </h4>
       <Link href="./../checkout">
         <a>
-          <button css={buyButtonStyles}>Proceed to Checkout</button>
+          <button data-cy="button-checkout" css={buyButtonStyles}>
+            Proceed to Checkout
+          </button>
         </a>
       </Link>
     </div>
