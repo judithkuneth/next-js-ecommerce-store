@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start -p ${PORT:-\"3000\"}",
-    "test": "jest",
-    "heroku-postbuild": "yarn migrate up && yarn build"
+    "test": "jest"
   },
   "dependencies": {
     "@emotion/core": "^10.0.35",
