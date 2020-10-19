@@ -2,11 +2,21 @@ import postgres from 'postgres';
 import dotenv from 'dotenv';
 import { useReducer } from 'react';
 import camelcaseKeys from 'camelcase-keys';
+import extractHerokuDatabaseEnvVars from './extractHerokuDatabaseEnvVars';
+extractHerokuDatabaseEnvVars();
 
 require('dotenv').config();
 dotenv.config();
 
-const sql = postgres();
+//Modify your database.js to connect to PostgreSQL over SSL when in "production" environments such as Heroku
+// const sql = postgres();
+const sql =
+  process.env.NODE_ENV === 'production'
+    ? // Heroku needs SSL connections but
+      // has an "unauthorized" certificate
+      // https://devcenter.heroku.com/changelog-items/852
+      postgres({ ssl: { rejectUnauthorized: false } })
+    : postgres();
 
 //// Alternative: use the connection string instead:
 // const sql = postgres(

@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "test": "jest"
+    "start": "next start -p ${PORT:-\"3000\"}",
+    "test": "jest",
+    "heroku-postbuild": "yarn migrate up && yarn build"
   },
   "dependencies": {
     "@emotion/core": "^10.0.35",
@@ -45,5 +46,8 @@
     "testPathIgnorePatterns": [
       "<rootDir>/cypress"
     ]
-  }
+  },
+  "cacheDirectories": [
+    ".next/cache"
+  ]
 }
