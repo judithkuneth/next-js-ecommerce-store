@@ -3,6 +3,7 @@
 import { jsx, css } from '@emotion/core';
 import Link from 'next/link';
 import { getCart } from '../util/cookies';
+import { useEffect, useState } from 'react';
 
 const headerStyles = css`
   display: flex;
@@ -31,7 +32,10 @@ const headerStyles = css`
 `;
 
 export default function Header() {
-  const cart = getCart();
+  const [cart, setCart] = useState([]);
+  useEffect(() => {
+    setCart(getCart());
+  }, []);
   console.log(cart);
   return (
     <header css={headerStyles}>

@@ -24,13 +24,6 @@ const formStyles = css`
     margin: 10px;
   }
 `;
-// const buyButtonStyles = css`
-
-//   padding: 18px;
-//   margin: 4px;
-//   font-size: 14px;
-//   padding: 6px;
-// `;
 
 export default function Checkout() {
   return (

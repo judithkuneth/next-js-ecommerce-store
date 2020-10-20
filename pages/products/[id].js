@@ -46,6 +46,7 @@ export default function Product(props) {
 
   //   return false;
   // });
+  
   if (!props.product)
     return (
       <Layout>

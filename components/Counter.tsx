@@ -2,7 +2,8 @@
 /** @jsxFrag React.Fragment */
 import { jsx, css } from '@emotion/core';
 import Link from 'next/link';
-import { cartSum } from './CartSum';
+import { cartSum } from './CartSum.tsx';
+// import { Props } from 'react';
 
 const buyButtonStyles = css`
   background-color: #f4ea80;
@@ -29,17 +30,25 @@ const checkOutStyles = css`
     padding: 0;
   }
 `;
+type CartWithData = Item[];
+type Item = {
+  id: number;
+  count: number;
+  productId: number;
+  price: number;
+};
+type Props = {
+  cartWithData: CartWithData;
+};
 
-export default function Counter(props) {
+export default function Counter(props: Props) {
   const cartWithData = props.cartWithData;
 
-  const countPerItemString = cartWithData.map((item) => {
+  const countPerItem = cartWithData.map((item) => {
     return item.count;
   });
 
-  const countPerItemInt = countPerItemString.map(Number);
-
-  const totalCount = countPerItemInt.reduce(function (a, b) {
+  const totalCount = countPerItem.reduce(function (a, b) {
     return a + b;
   }, 0);
   const sum = cartSum(cartWithData);

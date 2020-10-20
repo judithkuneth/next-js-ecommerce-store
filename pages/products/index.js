@@ -113,7 +113,7 @@ export default function ProductList(props) {
                       placeholder="0"
                       onChange={(e) => {
                         console.log('count updated:', e.currentTarget.value);
-                        setCount(e.currentTarget.value);
+                        setCount(Number(e.currentTarget.value));
                       }}
                     />
                     <button

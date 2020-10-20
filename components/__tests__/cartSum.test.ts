@@ -1,4 +1,4 @@
-import { cartSum } from '../CartSum';
+import { cartSum } from '../CartSum.tsx';
 
 test('returns sum of all items in cart', () => {
   const cartWithData = [
