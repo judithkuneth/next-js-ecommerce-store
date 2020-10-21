@@ -88,7 +88,7 @@ export default function ShoppingCart(props) {
   console.log('created new array! cartWithData:', cartWithData);
 
   return (
-    <Layout>
+    <Layout cart={cart}>
       <h1>Shopping Basket</h1>
       <div css={pageStyles}>
         <div css={productsStyles}>

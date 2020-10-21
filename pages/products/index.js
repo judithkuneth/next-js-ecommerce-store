@@ -58,6 +58,7 @@ const inputStyles = css`
 
 export default function ProductList(props) {
   const [cart, setCart] = useState(props.cart);
+  console.log('cartinindex', cart);
   const [count, setCount] = useState(0);
   console.log('getCartFromContext', props.cart);
   console.log('test', props.products);
@@ -66,7 +67,7 @@ export default function ProductList(props) {
     document.getElementById(id).innerHTML = 'Update';
   }
   return (
-    <Layout>
+    <Layout cart={cart}>
       <div style={{ padding: 10 }}>
         {' '}
         <h4>You have {cart.length} products in your cart</h4>

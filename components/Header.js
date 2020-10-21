@@ -2,7 +2,7 @@
 /** @jsxFrag React.Fragment */
 import { jsx, css } from '@emotion/core';
 import Link from 'next/link';
-import { getCart } from '../util/cookies';
+import { getCart, addToCookie } from '../util/cookies';
 import { useEffect, useState } from 'react';
 
 const headerStyles = css`
@@ -31,12 +31,16 @@ const headerStyles = css`
   }
 `;
 
-export default function Header() {
+export default function Header(props) {
   const [cart, setCart] = useState([]);
+  const cartFromBrowser = props.cart;
+  console.log('cartFromBrowser', cartFromBrowser);
+  console.log('cartinHEader', cart);
+
   useEffect(() => {
     setCart(getCart());
   }, []);
-  console.log(cart);
+  console.log('cart in Header', cart);
   return (
     <header css={headerStyles}>
       <Link href="/">
@@ -60,7 +64,7 @@ export default function Header() {
       <Link href="/cart">
         <a>
           <div>
-            {cart.length}
+            {cartFromBrowser.length}
             <img
               data-cy="header-link-cart"
               style={{ height: 50, marginRight: 70 }}
