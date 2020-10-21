@@ -2,7 +2,7 @@
 /** @jsxFrag React.Fragment */
 import { jsx, css } from '@emotion/core';
 import Link from 'next/link';
-import { cartSum } from './CartSum.tsx';
+import { cartSum } from './CartSum';
 // import { Props } from 'react';
 
 const buyButtonStyles = css`
