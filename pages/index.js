@@ -5,25 +5,26 @@ import { jsx, css } from '@emotion/core';
 import Layout from '../components/Layout.js';
 import nextCookies from 'next-cookies';
 import { ImageSection } from '../components/ImageSection.js';
+import Link from 'next/link';
 
 const backgroundStyles = css`
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url('titleBread.jpg');
   opacity: 1;
-  background-size: 1600px;
   background-repeat: no-repeat;
+  background-size: 1800px;
   min-height: 700px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 `;
-const backgroundTitleStyles = css`
+const headerStyles = css`
   h1 {
     color: #fffcf2;
     font-weight: 500;
     font-size: 64px;
-    margin: 10px;
+    margin-bottom: 10px;
     text-align: center;
     letter-spacing: 2px;
   }
@@ -34,20 +35,40 @@ const backgroundTitleStyles = css`
     text-align: center;
   }
 `;
+const buttonStyles = css`
+  background-color: #f4ea80;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 10px;
+  width: 220px;
+  cursor: pointer;
+  font-size: 22px;
+`;
 export default function Home(props) {
+  const cart = props.cart;
   return (
     <div>
-      <Layout>
+      <Layout cart={cart}>
         <section css={backgroundStyles}>
-          <div css={backgroundTitleStyles}>
-            <h1>Leidenschaft</h1>
-            <h1>Handarbeit</h1>
-            <h1>Tradition</h1>
+          <div css={headerStyles}>
+            <h1>
+              Leidenschaft
+              <br />
+              Handarbeit
+              <br />
+              Tradition
+            </h1>
             <h2>seit 1885</h2>
           </div>
+          <br />
+          <br />
+          <Link href="./products">
+            <a>
+              <button css={buttonStyles}>zum Shop</button>
+            </a>
+          </Link>
         </section>
         <ImageSection />
-
         <footer />
       </Layout>
     </div>
@@ -56,13 +77,13 @@ export default function Home(props) {
 
 export function getServerSideProps(context) {
   const allCookies = nextCookies(context);
-  const snackCart = allCookies.snackCart || [];
   const id = allCookies.id || [];
+  const cart = allCookies.cart || [];
 
   return {
     props: {
-      snackCart: snackCart,
       id: id,
+      cart: cart,
     },
   };
 }

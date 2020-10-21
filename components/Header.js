@@ -2,8 +2,6 @@
 /** @jsxFrag React.Fragment */
 import { jsx, css } from '@emotion/core';
 import Link from 'next/link';
-import { getCart, addToCookie } from '../util/cookies';
-import { useEffect, useState } from 'react';
 
 const headerStyles = css`
   display: flex;
@@ -15,7 +13,6 @@ const headerStyles = css`
   justify-content: space-between;
   align-items: center;
   margin: 0px 0px 0px 0px;
-  /* padding: 0px 0px 0px 0px; */
   background-color: #fffcf2;
 
   a {
@@ -32,20 +29,12 @@ const headerStyles = css`
 `;
 
 export default function Header(props) {
-  const [cart, setCart] = useState([]);
-  const cartFromBrowser = props.cart;
-  console.log('cartFromBrowser', cartFromBrowser);
-  console.log('cartinHEader', cart);
+  const cartFromCookie = props.cart ? props.cart : [];
 
-  useEffect(() => {
-    setCart(getCart());
-  }, []);
-  console.log('cart in Header', cart);
   return (
     <header css={headerStyles}>
       <Link href="/">
         <a>
-          {' '}
           <img style={{ height: 60 }} src="/logo.png" alt="" />
         </a>
       </Link>
@@ -64,10 +53,10 @@ export default function Header(props) {
       <Link href="/cart">
         <a>
           <div>
-            {cartFromBrowser.length}
+            {cartFromCookie.length}
             <img
               data-cy="header-link-cart"
-              style={{ height: 50, marginRight: 70 }}
+              style={{ height: 50, marginRight: 0 }}
               src="/cart.png"
               alt="Go to Shopping Cart"
             />

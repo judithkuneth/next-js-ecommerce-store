@@ -165,8 +165,8 @@ export async function getServerSideProps(context) {
   const allCookies = nextCookies(context);
   const cart = allCookies.cart || [];
   const id = allCookies.id || [];
-  console.log('getCartFromContext', cart);
-  console.log('getProductsFromContext', products);
+  console.log('get cart from context', cart);
+
   return {
     props: {
       products: products,

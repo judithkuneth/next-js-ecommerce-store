@@ -6,7 +6,7 @@ import Head from 'next/head';
 import { useState } from 'react';
 import Layout from '../../components/Layout';
 // import { products } from '../../database.js';
-import { addToCookie } from '../../util/cookies.js';
+import { addToCookie, getCart } from '../../util/cookies.js';
 
 const addButtonStyles = css`
   background-color: #f4ea80;
@@ -34,7 +34,7 @@ const inputStyles = css`
 
 export default function Product(props) {
   const [count, setCount] = useState(0);
-  const [cart, setCart] = useState(props.cart);
+  const [cart, setCart] = useState(getCart());
 
   const product = props.product;
 
@@ -46,21 +46,21 @@ export default function Product(props) {
 
   //   return false;
   // });
-  
+
   if (!props.product)
     return (
-      <Layout>
+      <Layout cart={cart}>
         <Head>
-          <title>User not found</title>
+          <title>Product not found</title>
         </Head>
-        <h1>user not found</h1>
+        <h1>Product not found</h1>
         <h1>Whoooops</h1>
-        <h1>user not found</h1>
+        <h1>Product not found</h1>
         <h1>Try another one</h1>
       </Layout>
     );
   return (
-    <Layout>
+    <Layout cart={cart}>
       <Head>
         <title>Single product</title>
       </Head>
@@ -74,14 +74,13 @@ export default function Product(props) {
         css={inputStyles}
         onChange={(e) => {
           console.log('count updated:', e.currentTarget.value);
-          setCount(e.currentTarget.value);
+          setCount(Number(e.currentTarget.value));
         }}
         placeholder="10"
       />
       <button
         data-cy={`button-add-product-id${product.id}`}
         css={addButtonStyles}
-        key={product.id}
         onClick={() => {
           console.log('addToCookie');
           setCart(addToCookie(`${product.id}`, count));

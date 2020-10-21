@@ -24,6 +24,10 @@ export function removeFromCookie(id) {
   return newCart;
 }
 
+export function resetCookie(emptyCart) {
+  cookie.set('cart', emptyCart);
+}
+
 export function addToCookie(id, count) {
   const cart = getCart();
   const parsedId = parse(id, 10);
@@ -44,13 +48,11 @@ export function addToCookie(id, count) {
     console.log('edit cookie');
     const index = cart.findIndex((item) => id === item.id);
 
-    console.log('index', index);
     const newCart = [...cart];
     newCart[index] = { ...newCart[index], count: count };
 
     cookie.set('cart', newCart);
     console.log('cookie.set: updated item.count', newCart);
-    // console.log('removed item, updated cart', newCart);
 
     return newCart;
   }

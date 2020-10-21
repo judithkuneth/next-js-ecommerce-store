@@ -58,10 +58,10 @@ const inputStyles = css`
 
 export default function ProductList(props) {
   const [cart, setCart] = useState(props.cart);
-  console.log('cartinindex', cart);
+
+  console.log('get cart from context', props.cart);
+
   const [count, setCount] = useState(0);
-  console.log('getCartFromContext', props.cart);
-  console.log('test', props.products);
 
   function addToEdit(id) {
     document.getElementById(id).innerHTML = 'Update';
@@ -108,7 +108,6 @@ export default function ProductList(props) {
                     }}
                   >
                     <input
-                      key={product.id}
                       data-cy={`product-id-${product.id}-amount`}
                       css={inputStyles}
                       placeholder="0"
@@ -120,7 +119,6 @@ export default function ProductList(props) {
                     <button
                       css={addButtonStyles}
                       data-cy={`button-add-product-id-${product.id}`}
-                      key={product.id}
                       value="Add"
                       id={`${product.id}`}
                       onClick={() => {
@@ -147,7 +145,6 @@ export async function getServerSideProps(context) {
   const allCookies = nextCookies(context);
   const cart = allCookies.cart || [];
   const id = allCookies.id || [];
-  console.log('test', products);
 
   return {
     props: {

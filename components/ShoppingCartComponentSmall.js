@@ -5,8 +5,8 @@ export default function ShoppingCartComponentSmall(props) {
     ...item,
     ...props.products.find((product) => product.id === item.id),
   }));
-  console.log('props.products', props.products);
-  console.log('Small component created new array! cartWithData:', cartWithData);
+
+  console.log('created new array! cartWithData:', cartWithData);
   return (
     <div>
       {cartWithData.map((item) => {

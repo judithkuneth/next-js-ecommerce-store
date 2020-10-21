@@ -7,13 +7,15 @@ const imageSectionStyles = css`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 30px;
+  justify-content: space-evenly;
+  align-content: center;
+  margin: 20px;
 `;
 const imageStyles = css`
   position: relative;
   text-align: center;
   color: white;
+  margin: 10px;
 `;
 
 const textInImageStyles = css`
