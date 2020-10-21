@@ -6,7 +6,7 @@ import Link from 'next/link';
 // import ShoppingCartComponent from '../../components/ShoppingCartComponent';
 import nextCookies from 'next-cookies';
 import { useState } from 'react';
-import Counter from '../../components/Counter.tsx';
+import Counter from '../../components/Counter';
 import { removeFromCookie, addToCookie } from '../../util/cookies';
 import React from 'react';
 
