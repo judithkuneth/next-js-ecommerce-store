@@ -4,8 +4,6 @@
 import { jsx, css } from '@emotion/core';
 import Layout from '../../components/Layout';
 import { ImageSection } from '../../components/ImageSection';
-import nextCookies from 'next-cookies';
-import { useState } from 'react';
 import { resetCookie } from '../../util/cookies';
 
 const pageStyles = css`
@@ -57,14 +55,4 @@ export default function Thanks() {
       </Layout>
     </div>
   );
-}
-export async function getServerSideProps(context) {
-  const allCookies = nextCookies(context);
-  const cart = allCookies.cart || [];
-
-  return {
-    props: {
-      cart: cart,
-    },
-  };
 }

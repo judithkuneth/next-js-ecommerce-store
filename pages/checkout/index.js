@@ -44,7 +44,7 @@ export default function Checkout(props) {
       alert('please enter a credit-card-number!');
     } else if (document.getElementById('ccv').value == '') {
       alert('please enter a ccv!');
-    } else window.location.href = 'http://localhost:3000/checkout/thanks';
+    } else window.location.href = './checkout/thanks';
   }
 
   return (
