@@ -4,21 +4,21 @@ next-js-ecommerce store
 
 # Description
 
-An ecommerce store with the following pages
+## Pages
 
-- landingpage
-- products overview
-- product single page
-- shopping cart
-- checkout page
-- thank you page
+landingpage
+products overview
+product single page
+shopping cart
+checkout page
+thank you page
 
-Lets you
+## Features
 
-- add products to basket
-- remove products from basket
-- update products in basket
-- Fill out shipment and payment infos
+add products to basket
+remove products from basket
+update products in basket
+Fill out shipment and payment infos
 
 # Technologies used
 
@@ -41,7 +41,7 @@ dotenv
 
 ## Landinpage
 
-![landingpage](C:\Users\Judith\projects\next-js-ecommerce-store\markdown\img1.png 'Screenshot 1')
+![landingpage](markdown/img1.png 'Screenshot 1')
 
 ## Product Overview
 
@@ -59,27 +59,30 @@ First setup up the Database then start the server
 
 Install postgres on your machine: https://www.postgresql.org/
 
-``bash
-
-Start potgres
-``bash
+```
+start postgres
 postgres
+```
 
 Login with super-User
-Windows: psql -U postgres postgres
-mac: psql postgres
+Windows:
+`psql -U postgres postgres`
+mac:
+`psql postgres`
 
 Setup new user and new database
+
+````
 CREATE DATABASE <database name>;
 CREATE USER <user name> WITH ENCRYPTED PASSWORD '<user password>';
-GRANT ALL PRIVILEGES ON DATABASE <database name> TO <user name>;
+GRANT ALL PRIVILEGES ON DATABASE <database name> TO <user name>;```
 
 Connect to the database using new user
 
-1. quit psql
-   \q
-2. reconnect
-   psql -U <user name> <database name>;
+quit psql
+   ```\q```
+reconnect
+   ```psql -U <user name> <database name>;```
 
 Create .env file in root
 
@@ -126,3 +129,9 @@ _yarn jest_
 ## Cypress
 
 \*yarn cypress start
+
+````
+
+```
+
+```
