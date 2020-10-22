@@ -1,25 +1,23 @@
 # next-js-ecommerce store
 
-## Description
+## Features
 
-This application lets you browse through a collection of products. It lets you add individual products to the shopping cart, edit their count, remove a product from the cart and fill out payment and shipment details.
-
-### Pages
-
-- landingpage
-- products overview
-- product single page
-- shopping cart
-- checkout page
-- thank you page
-
-### Features
+This application lets you
 
 - add products to basket
 - remove products from basket
 - update products in basket
 - fill out shipment and payment infos
 - view alert in case a mandatory field is not filled out at checkout
+
+## Pages
+
+- landingpage
+- products overview
+- single product page
+- shopping cart
+- checkout page
+- thank you page
 
 # Technologies used
 
@@ -38,19 +36,11 @@ This application lets you browse through a collection of products. It lets you a
 - ley
 - dotenv
 
-### Screenshots
+### Impressions
 
-![landingpage](markdown/img1.png 'Landingpage')
-
-![landingpage](markdown/img2.png 'Shop')
-
-![landingpage](markdown/img3.png 'Cart')
-
-![landingpage](markdown/img4.png 'Checkout')
+![landingpage](markdown/img1.png 'Landingpage') ![landingpage](markdown/img2.png 'Shop') ![landingpage](markdown/img3.png 'Cart') ![landingpage](markdown/img4.png 'Checkout')
 
 ## Setup Instructions
-
-First setup up the Database then start the server
 
 ### Database Setup
 
@@ -79,7 +69,7 @@ Connect to the database using new user
 
 quit psql
 `\q`
-reconnect
+and reconnect with newly created user
 `psql -U <user name> <database name>;`
 
 Create .env file in root
@@ -92,6 +82,8 @@ _PGPASSWORD=<password>_
 ```
 
 Add `.env` to .gitignore!
+
+### Migrations
 
 Running the migrations
 To set up the structure and the content of the database, run the migrations using Ley:
