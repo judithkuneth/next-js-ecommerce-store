@@ -19,6 +19,10 @@ This application lets you
 - checkout page
 - thank you page
 
+## Impressions
+
+![landingpage](markdown/img1.png 'Landingpage') ![landingpage](markdown/img2.png 'Shop') ![landingpage](markdown/img3.png 'Cart') ![landingpage](markdown/img4.png 'Checkout')
+
 # Technologies used
 
 - Next.js
@@ -36,11 +40,7 @@ This application lets you
 - ley
 - dotenv
 
-### Impressions
-
-![landingpage](markdown/img1.png 'Landingpage') ![landingpage](markdown/img2.png 'Shop') ![landingpage](markdown/img3.png 'Cart') ![landingpage](markdown/img4.png 'Checkout')
-
-## Setup Instructions
+# Setup Instructions
 
 ### Database Setup
 
@@ -93,7 +93,7 @@ To reverse the last single migration, run:
 
 `yarn migrate down`
 
-## Start Server
+### Start Server
 
 `_npm run dev_`
 
