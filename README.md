@@ -1,113 +1,113 @@
-# Title
+# next-js-ecommerce store
 
-next-js-ecommerce store
+## Description
 
-# Description
+This application lets you browse through a collection of products. It lets you add individual products to the shopping cart, edit their count, remove a product from the cart and fill out payment and shipment details.
 
-## Pages
+### Pages
 
-landingpage
-products overview
-product single page
-shopping cart
-checkout page
-thank you page
+- landingpage
+- products overview
+- product single page
+- shopping cart
+- checkout page
+- thank you page
 
-## Features
+### Features
 
-add products to basket
-remove products from basket
-update products in basket
-Fill out shipment and payment infos
+- add products to basket
+- remove products from basket
+- update products in basket
+- fill out shipment and payment infos
+- view alert in case a mandatory field is not filled out at checkout
 
 # Technologies used
 
-Next.js
-Postgres.js
-Jest
-Cypress.io
-GitHub Actions
+- Next.js
+- Postgres.js
+- Jest
+- Cypress.io
+- GitHub Actions
 
 # Libraries used
 
-emotion/core
-cookies-js
-nextcookies
-camelcase-keys
-ley
-dotenv
+- emotion/core
+- cookies-js
+- nextcookies
+- camelcase-keys
+- ley
+- dotenv
 
-# Screenshots
+### Screenshots
 
-## Landinpage
+![landingpage](markdown/img1.png 'Landingpage')
 
-![landingpage](markdown/img1.png 'Screenshot 1')
+![landingpage](markdown/img2.png 'Shop')
 
-## Product Overview
+![landingpage](markdown/img3.png 'Cart')
 
-## Product Detail Page
+![landingpage](markdown/img4.png 'Checkout')
 
-## Basket
-
-## Chckout Page
-
-# Setup Instructions
+## Setup Instructions
 
 First setup up the Database then start the server
 
-## Database Setup
+### Database Setup
 
 Install postgres on your machine: https://www.postgresql.org/
 
+Start postgres
+
 ```
-start postgres
 postgres
 ```
 
-Login with super-User
-Windows:
+Login with super-User on Windows:
 `psql -U postgres postgres`
-mac:
+on mMac:
 `psql postgres`
 
 Setup new user and new database
 
-````
+```
 CREATE DATABASE <database name>;
 CREATE USER <user name> WITH ENCRYPTED PASSWORD '<user password>';
-GRANT ALL PRIVILEGES ON DATABASE <database name> TO <user name>;```
+GRANT ALL PRIVILEGES ON DATABASE <database name> TO <user name>;
+```
 
 Connect to the database using new user
 
 quit psql
-   ```\q```
+`\q`
 reconnect
-   ```psql -U <user name> <database name>;```
+`psql -U <user name> <database name>;`
 
 Create .env file in root
 
+```
 _PGHOST=<localhost>_
 _PGDATABASE=<database_name>_
 _PGUSER=<user_name>_
 _PGPASSWORD=<password>_
+```
 
-Add .env to .gitignore!
+Add `.env` to .gitignore!
 
 Running the migrations
 To set up the structure and the content of the database, run the migrations using Ley:
 
-yarn migrate up
+`yarn migrate up`
 To reverse the last single migration, run:
 
-yarn migrate down
+`yarn migrate down`
 
 ## Start Server
 
-_npm run dev_
+`_npm run dev_`
 
 or
 
-_yarn dev_
+`_yarn dev_`
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
@@ -124,14 +124,8 @@ Deploy on Heroku https://dashboard.heroku.com/
 
 ## Jest
 
-_yarn jest_
+`_yarn jest_`
 
 ## Cypress
 
-\*yarn cypress start
-
-````
-
-```
-
-```
+`yarn cypress start`
