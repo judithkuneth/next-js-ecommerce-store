@@ -2,6 +2,7 @@
 /** @jsxFrag React.Fragment */
 import { jsx, css } from '@emotion/core';
 import Link from 'next/link';
+import { Logo } from './Logo';
 
 const headerStyles = css`
   display: flex;
@@ -16,12 +17,11 @@ const headerStyles = css`
   background-color: #fffcf2;
 
   a {
-    text-decoration: none;
+    /* text-decoration: none; */
     font-size: 20px;
     font-weight: bold;
-    color: black;
+    /* color: black; */
     margin: 12px;
-    color: #1b1c1d;
     div {
       font-size: 18px;
     }
@@ -33,21 +33,13 @@ export default function Header(props) {
 
   return (
     <header css={headerStyles}>
-      <Link href="/">
-        <a>
-          <img style={{ height: 60 }} src="/logo.png" alt="" />
-        </a>
-      </Link>
+      <Logo />
       <nav>
         <Link href="/products">
           <a data-cy="header-link-shop">Shop</a>
         </Link>
-        <Link href="/products">
-          <a data-cy="header-link-about">About</a>
-        </Link>
-        <Link href="/products">
-          <a data-cy="header-link-contact">Contact</a>
-        </Link>
+        <a data-cy="header-link-about">About</a>
+        <a data-cy="header-link-contact">Contact</a>
       </nav>
 
       <Link href="/cart">

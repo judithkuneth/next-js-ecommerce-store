@@ -2,21 +2,18 @@
 /** @jsxFrag React.Fragment */
 import { jsx, css } from '@emotion/core';
 import Layout from '../../components/Layout';
-import Link from 'next/link';
-// import ShoppingCartComponent from '../../components/ShoppingCartComponent';
 import nextCookies from 'next-cookies';
 import { useState } from 'react';
-import Counter from '../../components/Counter';
+import CheckoutComponent from '../../components/CheckoutComponent';
 import { removeFromCookie, addToCookie } from '../../util/cookies';
 import React from 'react';
 
-// import { getProducts } from '../../database';
 const pageStyles = css`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: flex-start;
 `;
 const productsStyles = css`
   display: flex;
@@ -38,7 +35,13 @@ const titleStyles = css`
   flex-wrap: wrap;
   justify-content: space-between;
   font-weight: bold;
-  width: 110%;
+  /* width: 300px; */
+  h2 {
+    padding: 0px;
+  }
+  h4 {
+    margin: 2px 10px;
+  }
 `;
 const ctaStyles = css`
   display: flex;
@@ -46,29 +49,13 @@ const ctaStyles = css`
   flex-wrap: wrap;
 `;
 const updateButtonStyles = css`
-  background-color: #f4ea80;
-  border-radius: 8px;
-  padding: 6px;
-  margin: 8px;
-  font-size: 14px;
   width: 80px;
-  cursor: pointer;
 `;
 const removeButtonStyles = css`
   background-color: #b5babf4d;
-  border-radius: 8px;
-  padding: 6px;
-  margin: 8px;
-  font-size: 14px;
   width: 80px;
-  cursor: pointer;
 `;
 const inputStyles = css`
-  background-color: #ffff;
-  border-radius: 8px;
-  padding: 6px;
-  margin: 8px;
-  font-size: 14px;
   width: 50px;
   text-align: center;
   :focus {
@@ -89,7 +76,7 @@ export default function ShoppingCart(props) {
 
   return (
     <Layout cart={cart}>
-      <h1>Shopping Basket</h1>
+      <h1>Shopping Cart</h1>
       <div css={pageStyles}>
         <div css={productsStyles}>
           {cartWithData.map((item) => {
@@ -112,7 +99,8 @@ export default function ShoppingCart(props) {
                       <input
                         data-cy={`input-product-id-${item.id}`}
                         css={inputStyles}
-                        // id={item.id}
+                        type="number"
+                        min="0"
                         defaultValue={item.count}
                         onChange={(e) =>
                           setCount(Number(e.currentTarget.value))
@@ -121,7 +109,6 @@ export default function ShoppingCart(props) {
                       <button
                         data-cy={`button-update-product-id-${item.id}`}
                         css={updateButtonStyles}
-                        // key={item.id}
                         onClick={(e) => {
                           console.log('update item');
                           setCart(addToCookie(`${item.id}`, count));
@@ -149,11 +136,9 @@ export default function ShoppingCart(props) {
           })}
         </div>
         <div>
-          <Counter cartWithData={cartWithData} />
+          <CheckoutComponent cartWithData={cartWithData} />
         </div>
       </div>
-
-      {/* <ShoppingCartComponent cart={cart} products={props.products} /> */}
       <br />
     </Layout>
   );
@@ -164,13 +149,11 @@ export async function getServerSideProps(context) {
   const products = await getProducts();
   const allCookies = nextCookies(context);
   const cart = allCookies.cart || [];
-  const id = allCookies.id || [];
   console.log('get cart from context', cart);
 
   return {
     props: {
       products: products,
-      id: id,
       cart: cart,
     },
   };

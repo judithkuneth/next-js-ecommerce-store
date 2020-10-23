@@ -1,15 +1,13 @@
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */
-
+import React from 'react';
 import { jsx, css } from '@emotion/core';
 import Link from 'next/link';
 import Layout from '../../components/Layout';
-// import { products } from '../../database.js';
 import { useState } from 'react';
 import nextCookies from 'next-cookies';
 import { addToCookie } from '../../util/cookies.js';
-import ShoppingCartComponentSmall from '../../components/ShoppingCartComponentSmall';
-// import productComponent from '../../components/productComponent.js';
+import CartPreview from '../../components/CartPreview';
 
 const productsStyles = css`
   display: flex;
@@ -27,27 +25,14 @@ const productStyles = css`
   img {
     margin-bottom: 4px;
   }
-
-  a {
-    text-decoration: none;
-    color: black;
-  }
 `;
 const addButtonStyles = css`
   background-color: #f4ea80;
-  border-radius: 8px;
-  padding: 6px;
-  font-size: 14px;
   width: 25%;
-  cursor: pointer;
 `;
 const inputStyles = css`
-  background-color: #ffff;
-  border-radius: 8px;
-  padding: 6px;
-  margin: 8px;
   font-size: 14px;
-  width: 10%;
+  width: 20%;
   text-align: center;
   :focus {
     box-shadow: 0 0 3pt 2pt #e69b20;
@@ -58,7 +43,6 @@ const inputStyles = css`
 
 export default function ProductList(props) {
   const [cart, setCart] = useState(props.cart);
-
   console.log('get cart from context', props.cart);
 
   const [count, setCount] = useState(0);
@@ -71,7 +55,7 @@ export default function ProductList(props) {
       <div style={{ padding: 10 }}>
         {' '}
         <h4>You have {cart.length} products in your cart</h4>
-        <ShoppingCartComponentSmall cart={cart} products={props.products} />
+        <CartPreview cart={cart} products={props.products} />
       </div>
       <section css={productsStyles}>
         {props.products.map((product) => {
@@ -85,7 +69,6 @@ export default function ProductList(props) {
                       src={`../${product.id}.jpg`}
                       alt="some bread"
                     />
-
                     <br />
                     <h2>{product.name}</h2>
                   </a>
@@ -110,6 +93,8 @@ export default function ProductList(props) {
                     <input
                       data-cy={`product-id-${product.id}-amount`}
                       css={inputStyles}
+                      type="number"
+                      min="0"
                       placeholder="0"
                       onChange={(e) => {
                         console.log('count updated:', e.currentTarget.value);
@@ -144,12 +129,10 @@ export async function getServerSideProps(context) {
   const products = await getProducts();
   const allCookies = nextCookies(context);
   const cart = allCookies.cart || [];
-  const id = allCookies.id || [];
 
   return {
     props: {
       products: products,
-      id: id,
       cart: cart,
     },
   };

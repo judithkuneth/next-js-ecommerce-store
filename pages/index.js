@@ -9,7 +9,7 @@ import Link from 'next/link';
 
 const backgroundStyles = css`
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('titleBread.jpg');
+    url('bread.jpg');
   opacity: 1;
   background-repeat: no-repeat;
   background-size: 1800px;
@@ -37,11 +37,9 @@ const headerStyles = css`
 `;
 const buttonStyles = css`
   background-color: #f4ea80;
-  border-radius: 8px;
   padding: 16px;
   margin-top: 10px;
   width: 220px;
-  cursor: pointer;
   font-size: 22px;
 `;
 export default function Home(props) {
@@ -77,12 +75,10 @@ export default function Home(props) {
 
 export function getServerSideProps(context) {
   const allCookies = nextCookies(context);
-  const id = allCookies.id || [];
   const cart = allCookies.cart || [];
 
   return {
     props: {
-      id: id,
       cart: cart,
     },
   };

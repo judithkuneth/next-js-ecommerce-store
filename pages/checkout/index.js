@@ -3,8 +3,6 @@
 
 import { jsx, css } from '@emotion/core';
 import Layout from '../../components/Layout';
-import Link from 'next/link';
-import { getCart } from '../../util/cookies';
 import nextCookies from 'next-cookies';
 
 const formStyles = css`
@@ -13,13 +11,12 @@ const formStyles = css`
   flex-direction: column;
   flex-wrap: wrap;
   align-content: center;
+
   input {
     width: 300px;
+    margin: 6px;
   }
   button {
-    background-color: #f4ea80;
-    border-radius: 8px;
-    cursor: pointer;
     width: 310px;
     font-size: 24px;
     padding: 10px;
@@ -28,7 +25,7 @@ const formStyles = css`
 `;
 
 export default function Checkout(props) {
-  function required() {
+  function checkRequiredFields() {
     console.log('get input');
     if (document.getElementById('firstname').value == '') {
       alert('please enter a first name!');
@@ -78,7 +75,7 @@ export default function Checkout(props) {
         />
         <br />
         <br />
-        <h2>Credit Card details:</h2>
+        <h2>Credit Card details</h2>
         <input
           id="credit-card-name"
           data-cy="input-creditcard-name"
@@ -102,7 +99,7 @@ export default function Checkout(props) {
         <button
           data-cy="button-buy"
           onClick={(e) => {
-            required();
+            checkRequiredFields();
           }}
         >
           Buy

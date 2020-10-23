@@ -1,5 +1,7 @@
 import { cartSum } from '../CartSum.tsx';
 
+// to run unit tests => yarn jest
+
 test('returns sum of all items in cart', () => {
   const cartWithData = [
     { id: 26, count: '1', productId: 1, name: 'Burger Buns', price: 0.01 },

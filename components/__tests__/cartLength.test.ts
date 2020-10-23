@@ -1,6 +1,8 @@
 import { addToCookie, removeFromCookie } from '../../util/cookies';
 import cookie from 'js-cookie';
 
+// to run unit tests => yarn jest
+
 afterEach(() => {
   cookie.remove('cart');
 });

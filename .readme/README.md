@@ -21,7 +21,7 @@ This application lets you
 
 ## Impressions
 
-![landingpage](markdown/img1.png 'Landingpage') ![landingpage](markdown/img2.png 'Shop') ![landingpage](markdown/img3.png 'Cart') ![landingpage](markdown/img4.png 'Checkout')
+![landingpage](./img1.png 'Landingpage') ![landingpage](./img2.png 'Shop') ![landingpage](./img3.png 'Cart') ![landingpage](./img4.png 'Checkout')
 
 # Technologies used
 
@@ -72,7 +72,7 @@ quit psql
 and reconnect with newly created user
 `psql -U <user name> <database name>;`
 
-Create .env file in root
+Rename example.env to `.env` and insert your data
 
 ```
 _PGHOST=<localhost>_

@@ -6,12 +6,9 @@ import Layout from '../../components/Layout';
 import { ImageSection } from '../../components/ImageSection';
 import { resetCookie } from '../../util/cookies';
 
-const pageStyles = css`
-  padding-top: 0;
-`;
 const backgroundStyles = css`
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('../../titleBread.jpg');
+    url('../../bread.jpg');
   opacity: 1;
   background-size: 1600px;
   background-repeat: no-repeat;
@@ -27,8 +24,8 @@ const textStyles = css`
   h1 {
     color: #fffcf2;
     font-weight: 700;
-    font-size: 64px;
-    margin: 10px;
+    font-size: 56px;
+    margin: 20px;
     text-align: center;
   }
   h2 {
@@ -43,12 +40,12 @@ export default function Thanks() {
   const cart = [];
   resetCookie(cart);
   return (
-    <div css={pageStyles}>
+    <div>
       <Layout cart={cart}>
         <section css={backgroundStyles}>
           <div css={textStyles}>
-            <h3>Checkout</h3>
-            <h1>Thanks for shopping with us :) </h1>
+            <h1>Thanks for shopping with us!</h1>
+            <h2>Enjoy and see you soon :)</h2>
           </div>
         </section>
         <ImageSection />

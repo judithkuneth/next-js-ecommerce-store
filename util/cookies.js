@@ -32,6 +32,7 @@ export function addToCookie(id, count) {
   const cart = getCart();
   const parsedId = parse(id, 10);
   const check = cart.filter((item) => item.id === parsedId);
+  console.log('id', id);
   console.log('filter for id', id, 'in cart', cart, '... Result:', check);
 
   function addItem(id, count) {

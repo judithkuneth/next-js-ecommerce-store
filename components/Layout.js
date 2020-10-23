@@ -11,7 +11,9 @@ export default function Layout(props) {
       </Head>
       <Header cart={props.cart} />
 
-      <main style={{ padding: 0, paddingTop: 70 }}>{props.children}</main>
+      <main style={{ padding: 0, paddingTop: 70, minHeight: 650 }}>
+        {props.children}
+      </main>
       <Footer />
     </div>
   );
