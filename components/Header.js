@@ -17,10 +17,8 @@ const headerStyles = css`
   background-color: #fffcf2;
 
   a {
-    /* text-decoration: none; */
     font-size: 20px;
     font-weight: bold;
-    /* color: black; */
     margin: 12px;
     div {
       font-size: 18px;

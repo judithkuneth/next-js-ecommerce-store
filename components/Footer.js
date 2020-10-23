@@ -10,8 +10,8 @@ const footerStyles = css`
   width: 100%;
   height: 70px;
   display: flex;
-  margin: 0px 0px 0px 0px;
-  padding: 0px 30px 0px 10px;
+  margin: 0px;
+  padding: 0px;
   background-color: #fffcf2;
 `;
 

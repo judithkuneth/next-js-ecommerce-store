@@ -23,7 +23,7 @@ const inputStyles = css`
   :focus {
     box-shadow: 0 0 3pt 2pt #e69b20;
     outline-color: #e69b20;
-    border-color: #ffff;
+    border-color: #1b1c1d;
   }
 `;
 

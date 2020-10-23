@@ -4,7 +4,7 @@ import Footer from './Footer';
 export default function Layout(props) {
   const cart = props.cart;
   return (
-    <div>
+    <>
       <Head>
         <title>Bäckerei Schrott</title>
         <link rel="icon" href="/logo.png" />
@@ -15,6 +15,6 @@ export default function Layout(props) {
         {props.children}
       </main>
       <Footer />
-    </div>
+    </>
   );
 }
