@@ -21,7 +21,7 @@ This application lets you
 
 ## Impressions
 
-![landingpage](./img1.png 'Landingpage') ![landingpage](./img2.png 'Shop') ![landingpage](./img3.png 'Cart') ![landingpage](./img4.png 'Checkout')
+![landingpage](./img1.png 'Landingpage') ![landingpage](./img2.png 'Shop') ![landingpage](./img3.png 'Checkout')
 
 # Technologies used
 
@@ -72,13 +72,13 @@ quit psql
 and reconnect with newly created user
 `psql -U <user name> <database name>;`
 
-Rename example.env to `.env` and insert your data
+Rename `example.env` to `.env` and insert your data
 
 ```
-_PGHOST=<localhost>_
-_PGDATABASE=<database_name>_
-_PGUSER=<user_name>_
-_PGPASSWORD=<password>_
+_PGHOST=<localhost>
+_PGDATABASE=<database_name>
+_PGUSER=<user_name>
+_PGPASSWORD=<password>
 ```
 
 Add `.env` to .gitignore!
