@@ -14,7 +14,7 @@ export default function Layout(props) {
       <main style={{ padding: 0, paddingTop: 70, minHeight: 650 }}>
         {props.children}
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
