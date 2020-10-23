@@ -13,6 +13,9 @@ describe('CheckoutFlow', () => {
     cy.get('[data-cy=input-creditcard-number]').type('1234556677889');
     cy.get('[data-cy=input-ccv]').type('123');
     cy.get('[data-cy=button-buy]').click();
+    cy.on('window:alert', (str) => {
+      expect(str).to.equal(`please enter a last name!`);
+    });
     cy.get('[data-cy=input-lastname]').type('Pete');
     cy.get('[data-cy=button-buy]').click();
     cy.location('pathname').should('match', /\/checkout\/thanks$/);
